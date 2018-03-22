@@ -70,7 +70,7 @@ def is_game_over(guess_num, score):
 
 
 def main():
-    #answer = create_sequence()
+    # answer = create_sequence()
     answer = ['g', 'b', 'w', 'b']
     print()
 
