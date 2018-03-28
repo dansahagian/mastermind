@@ -1,6 +1,6 @@
 import random
 
-COLORS = ('w', 'b', 'k', 'y', 'r', 'g')
+COLORS = ('wh', 'bk', 'bl', 'yl', 'rd', 'gn')
 
 
 def create_sequence():
@@ -13,7 +13,7 @@ def create_sequence():
 
 
 def enter_color():
-    color = input('Please enter your color (w, b, k, y, r, g): ')
+    color = input('Please enter your color (wh, bk, bl, yl, rd, gn): ')
     if color not in COLORS:
         print('{} is not a valid color!'.format(color))
         return enter_color()
@@ -43,13 +43,13 @@ def score_guess(guess, answer):
     score = []
     for i, color in enumerate(ges):
         if color == ans[i]:
-            score.append('k')
+            score.append('bk')
             ans[i] = '*'
             ges[i] = '-'
 
     for i, color in enumerate(ges):
         if color in ans:
-            score.append('w')
+            score.append('wh')
             ans[ans.index(color)] = '*'
             ges[i] = '-'
 
@@ -58,7 +58,7 @@ def score_guess(guess, answer):
 
 
 def is_game_over(guess_num, score):
-    if score == ['k', 'k', 'k', 'k']:
+    if score == ['bk', 'bk', 'bk', 'bk']:
         print('You won!')
         return True
 
@@ -70,8 +70,8 @@ def is_game_over(guess_num, score):
 
 
 def main():
-    # answer = create_sequence()
-    answer = ['g', 'b', 'w', 'b']
+    answer = create_sequence()
+    # answer = ['g', 'b', 'w', 'b']
     print()
 
     guesses = []
