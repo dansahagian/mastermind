@@ -20,3 +20,4 @@
     * 4 white pegs means you have all the colors, but in the wrong positions
     * 2 black and 2 white pegs means you have all the colors right, but two are in the wrong position
  
+![Screenshot of Game](./screenshot.png)
