@@ -68,8 +68,7 @@ def score_guess(guess, answer):
             ans[ans.index(color)] = '*'
             ges[i] = '-'
 
-    random.shuffle(score)
-    return score
+    return sorted(score)
 
 
 def is_game_over(guess_num, score):
@@ -86,7 +85,6 @@ def is_game_over(guess_num, score):
 
 def main():
     answer = create_sequence()
-    # answer = ['g', 'b', 'w', 'b']
     print()
 
     guesses = []
@@ -103,12 +101,12 @@ def main():
         scores.append(score)
 
         for j, guess in enumerate(guesses):
-            print(f"{j+1}: {display_guess(guess)} - Score: {display_score(scores[j])}")
+            print(f"{j+1:02}: {display_guess(guess)} - Score: {display_score(scores[j])}")
         print()
 
         i += 1
 
-    print(f"The sequence was {display_guess(answer)}.")
+    print(f"The sequence was {display_guess(answer)}\n")
 
 
 if __name__ == '__main__':
