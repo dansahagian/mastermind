@@ -19,6 +19,14 @@ COLOR_MAP = {"w": W, "b": B, "p": P, "y": Y, "r": R, "g": G}
 SCORE_MAP = {"bb": BB, "ww": WW}
 
 
+def display_guess(guess):
+    return " ".join([COLOR_MAP[x] for x in guess])
+
+
+def display_score(score):
+    return " ".join([SCORE_MAP[x] for x in score])
+
+
 def create_sequence():
     return [random.choice(list(COLOR_MAP.keys())) for _ in range(0, 4)]
 
@@ -30,14 +38,6 @@ def enter_color():
         return enter_color()
 
     return color
-
-
-def display_guess(guess):
-    return " ".join([COLOR_MAP[x] for x in guess])
-
-
-def display_score(score):
-    return " ".join([SCORE_MAP[x] for x in score])
 
 
 def guess_sequence():
