@@ -1,7 +1,4 @@
-from mastermind import (
-    create_sequence,
-    is_game_over
-)
+from mastermind import create_sequence, is_game_over
 
 
 def test_sequence_length():
