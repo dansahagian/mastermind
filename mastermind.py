@@ -15,34 +15,29 @@ G = colored(BIG_DOT, "green")
 BB = colored(LIL_DOT, "grey")
 WW = colored(LIL_DOT, "white")
 
-COLOR_MAP = {"w": W, "b": B, "p": P, "y": Y, "r": R, "g": G}
-SCORE_MAP = {"bb": BB, "ww": WW}
+COLOR_MAP = {"w": W, "b": B, "p": P, "y": Y, "r": R, "g": G, "bb": BB, "ww": WW}
 
 
-def display_guess(guess):
-    return " ".join([COLOR_MAP[x] for x in guess])
+def display_dots(sequence: list) -> str:
+    return " ".join([COLOR_MAP[x] for x in sequence])
 
 
-def display_score(score):
-    return " ".join([SCORE_MAP[x] for x in score])
+def create_sequence() -> list:
+    choices = ["w", "b", "p", "y", "r", "g"]
+    return [random.choice(choices) for _ in range(0, 4)]
 
 
-def create_sequence():
-    return [random.choice(list(COLOR_MAP.keys())) for _ in range(0, 4)]
-
-
-def enter_color():
+def enter_color() -> str:
     color = input(f"Enter a color ({W} w  {B} b  {P} p  {Y} y  {R} r  {G} g): ")
     if color not in COLOR_MAP:
-        print("{} is not a valid color!".format(color))
+        print(f"{color} is not a valid color!")
         return enter_color()
-
     return color
 
 
-def guess_sequence():
+def guess_sequence() -> list:
     guess = [enter_color() for _ in range(0, 4)]
-    confirm = input("\nConfirm guess of {} (y or n): ".format(display_guess(guess)))
+    confirm = input("\nConfirm guess of {} (y or n): ".format(display_dots(guess)))
 
     if confirm == "y":
         return guess
@@ -51,9 +46,9 @@ def guess_sequence():
     return guess_sequence()
 
 
-def score_guess(guess, answer):
-    ans = list(answer)
-    ges = list(guess)
+def score_guess(guess: list, answer: list) -> list:
+    ans = answer.copy()
+    ges = guess.copy()
 
     score = []
     for i, color in enumerate(ges):
@@ -71,15 +66,9 @@ def score_guess(guess, answer):
     return sorted(score)
 
 
-def is_game_over(guess_num, score):
+def winner(score: list) -> bool:
     if score == ["bb", "bb", "bb", "bb"]:
-        print("You won!")
         return True
-
-    if guess_num > 10:
-        print("You used all your turns. You lose!")
-        return True
-
     return False
 
 
@@ -90,25 +79,25 @@ def main():
     guesses = []
     scores = []
 
-    i = 1
-    score = ["", "", "", ""]
-
-    while not is_game_over(i, score):
+    for i in range(1, 11):
         guess = guess_sequence()
-        guesses.append(guess)
-
         score = score_guess(guess, answer)
+
+        guesses.append(guess)
         scores.append(score)
 
+        if winner(score):
+            text = "guesses" if i > 1 else "guess"
+            print(f"You Won in {i} {text}! The sequence was {display_dots(answer)}\n")
+            return True
+
         for j, guess in enumerate(guesses):
-            print(
-                f"{j+1:02}: {display_guess(guess)} - Score: {display_score(scores[j])}"
-            )
+            guess_output = display_dots(guess)
+            score_output = display_dots(scores[j])
+            print(f"{j+1:02}: {guess_output} - Score: {score_output}")
         print()
 
-        i += 1
-
-    print(f"The sequence was {display_guess(answer)}\n")
+    print(f"You Lost! The sequence was {display_dots(answer)}\n")
 
 
 if __name__ == "__main__":
