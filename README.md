@@ -15,12 +15,10 @@
 * It will ask you to confirm your guess before scoring it
 
 ### Scoring:
-* A black peg means you have the correct color in the correct position
+* A green peg means you have the correct color in the correct position
 * A white peg means you have the correct color in the wrong position
-* Black and white scoring pegs are randomized. They don't correlate to the position of your colors.
+* Green and white scoring pegs are sorted. They don't correlate to the position of your colors.
 
     #### Examples:
     * 4 white pegs means you have all the colors, but in the wrong positions
-    * 2 black and 2 white pegs means you have all the colors right, but two are in the wrong position
- 
-![Screenshot of Game](./screenshot.png)
+    * 2 green and 2 white pegs means you have all the colors right, but two are in the wrong position
