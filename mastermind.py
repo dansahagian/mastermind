@@ -12,10 +12,10 @@ Y = colored(BIG_DOT, "yellow")
 R = colored(BIG_DOT, "red")
 G = colored(BIG_DOT, "green")
 
-CP = colored(LIL_DOT, "grey")
+BP = colored(LIL_DOT, "grey")
 WP = colored(LIL_DOT, "white")
 
-COLOR_MAP = {"w": W, "b": B, "p": P, "y": Y, "r": R, "g": G, "cp": CP, "wp": WP}
+COLOR_MAP = {"w": W, "b": B, "p": P, "y": Y, "r": R, "g": G, "bp": BP, "wp": WP}
 
 
 def display_dots(sequence: list) -> str:
@@ -52,7 +52,7 @@ def score_guess(guess: list, answer: list) -> list:
     score = []
     for i, color in enumerate(ges):
         if color == ans[i]:
-            score.append("cp")
+            score.append("bp")
             ans[i] = "*"
             ges[i] = "-"
 
@@ -66,7 +66,7 @@ def score_guess(guess: list, answer: list) -> list:
 
 
 def winner(score: list) -> bool:
-    if score == ["cp", "cp", "cp", "cp"]:
+    if score == ["bp", "bp", "bp", "bp"]:
         return True
     return False
 

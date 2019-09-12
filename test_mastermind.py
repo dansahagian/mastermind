@@ -14,15 +14,15 @@ class TestMastermind(object):
     @pytest.mark.parametrize(
         "guess,expected",
         [
-            (["b", "w", "w", "w"], ["cp"]),
-            (["b", "b", "b", "b"], ["cp", "cp"]),
-            (["b", "r", "p", "w"], ["cp", "cp", "cp"]),
-            (["b", "r", "p", "b"], ["cp", "cp", "cp", "cp"]),
+            (["b", "w", "w", "w"], ["bp"]),
+            (["b", "b", "b", "b"], ["bp", "bp"]),
+            (["b", "r", "p", "w"], ["bp", "bp", "bp"]),
+            (["b", "r", "p", "b"], ["bp", "bp", "bp", "bp"]),
             (["w", "b", "w", "w"], ["wp"]),
             (["w", "b", "r", "w"], ["wp", "wp"]),
             (["w", "b", "r", "p"], ["wp", "wp", "wp"]),
             (["r", "b", "b", "p"], ["wp", "wp", "wp", "wp"]),
-            (["b", "p", "r", "b"], ["cp", "cp", "wp", "wp"]),
+            (["b", "p", "r", "b"], ["bp", "bp", "wp", "wp"]),
         ]
     )
     def test_score_guess(self, answer, guess, expected):
