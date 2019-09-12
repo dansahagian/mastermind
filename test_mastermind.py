@@ -11,38 +11,19 @@ class TestMastermind(object):
     def test_sequence_length(self):
         assert len(create_sequence()) == 4
 
-    def test_score_guess_one_match(self, answer):
-        guess = ["b", "w", "w", "w"]
-        assert score_guess(guess, answer) == ["cp"]
-
-    def test_score_guess_two_match(self, answer):
-        guess = ["b", "b", "b", "b"]
-        assert score_guess(guess, answer) == ["cp", "cp"]
-
-    def test_score_guess_three_match(self, answer):
-        guess = ["b", "r", "p", "w"]
-        assert score_guess(guess, answer) == ["cp", "cp", "cp"]
-
-    def test_score_guess_four_match(self, answer):
-        guess = ["b", "r", "p", "b"]
-        assert score_guess(guess, answer) == ["cp", "cp", "cp", "cp"]
-
-    def test_score_guess_one_color_correct(self, answer):
-        guess = ["w", "b", "w", "w"]
-        assert score_guess(guess, answer) == ["wp"]
-
-    def test_score_guess_two_color_correct(self, answer):
-        guess = ["w", "b", "r", "w"]
-        assert score_guess(guess, answer) == ["wp", "wp"]
-
-    def test_score_guess_three_color_correct(self, answer):
-        guess = ["w", "b", "r", "p"]
-        assert score_guess(guess, answer) == ["wp", "wp", "wp"]
-
-    def test_score_guess_four_color_correct(self, answer):
-        guess = ["r", "b", "b", "p"]
-        assert score_guess(guess, answer) == ["wp", "wp", "wp", "wp"]
-
-    def test_score_two_and_two(self, answer):
-        guess = ["b", "p", "r", "b"]
-        assert score_guess(guess, answer) == ["cp", "cp", "wp", "wp"]
+    @pytest.mark.parametrize(
+        "guess,expected",
+        [
+            (["b", "w", "w", "w"], ["cp"]),
+            (["b", "b", "b", "b"], ["cp", "cp"]),
+            (["b", "r", "p", "w"], ["cp", "cp", "cp"]),
+            (["b", "r", "p", "b"], ["cp", "cp", "cp", "cp"]),
+            (["w", "b", "w", "w"], ["wp"]),
+            (["w", "b", "r", "w"], ["wp", "wp"]),
+            (["w", "b", "r", "p"], ["wp", "wp", "wp"]),
+            (["r", "b", "b", "p"], ["wp", "wp", "wp", "wp"]),
+            (["b", "p", "r", "b"], ["cp", "cp", "wp", "wp"]),
+        ]
+    )
+    def test_score_guess(self, answer, guess, expected):
+        assert score_guess(guess, answer) == expected

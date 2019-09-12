@@ -3,9 +3,13 @@
 
 ## Mastermind
 
+This game looks best on a dark terminal background, but should work on lighter ones with minimum modification.
+
 ### How to run the game:
 * `pipenv install`
 * `pipenv run python mastermind.py`
+
+
 
 
 ### Rules of mastermind:
@@ -15,10 +19,10 @@
 * It will ask you to confirm your guess before scoring it
 
 ### Scoring:
-* A green peg means you have the correct color in the correct position
+* A black peg means you have the correct color in the correct position
 * A white peg means you have the correct color in the wrong position
-* Green and white scoring pegs are sorted. They don't correlate to the position of your colors.
+* Black and white scoring pegs are sorted. They don't correlate to the position of your colors.
 
     #### Examples:
     * 4 white pegs means you have all the colors, but in the wrong positions
-    * 2 green and 2 white pegs means you have all the colors right, but two are in the wrong position
+    * 2 black and 2 white pegs means you have all the colors right, but two are in the wrong position

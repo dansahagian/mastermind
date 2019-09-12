@@ -8,7 +8,7 @@ pytest = "*"
 black = "*"
 
 [packages]
-sty = "*"
+termcolor = "*"
 
 [requires]
 python_version = "3.7"

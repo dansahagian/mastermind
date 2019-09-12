@@ -1,26 +1,19 @@
 import random
 
-from sty import bg, fg
+from termcolor import colored
 
 BIG_DOT = "\u2B24"
 LIL_DOT = "\u25CF"
 
-WHITE = fg(255, 255, 255)
-BLUE = fg(86, 180, 223)
-PURPLE = fg(204, 121, 167)
-YELLOW = fg(240, 228, 66)
-RED = fg(213, 94, 0)
-GREEN = fg(0, 158, 115)
+W = colored(BIG_DOT, "white")
+B = colored(BIG_DOT, "blue")
+P = colored(BIG_DOT, "magenta")
+Y = colored(BIG_DOT, "yellow")
+R = colored(BIG_DOT, "red")
+G = colored(BIG_DOT, "green")
 
-W = f"{WHITE}{BIG_DOT}{WHITE}"
-B = f"{fg(86, 180, 223)}{BIG_DOT}{WHITE}"
-P = f"{fg(204, 121, 167)}{BIG_DOT}{WHITE}"
-Y = f"{fg(240, 228, 66)}{BIG_DOT}{WHITE}"
-R = f"{fg(213, 94, 0)}{BIG_DOT}{WHITE}"
-G = f"{fg(0, 158, 115)}{BIG_DOT}{WHITE}"
-
-CP = f"{GREEN}{LIL_DOT}{WHITE}"
-WP = f"{WHITE}{LIL_DOT}{WHITE}"
+CP = colored(LIL_DOT, "grey")
+WP = colored(LIL_DOT, "white")
 
 COLOR_MAP = {"w": W, "b": B, "p": P, "y": Y, "r": R, "g": G, "cp": CP, "wp": WP}
 
@@ -79,10 +72,8 @@ def winner(score: list) -> bool:
 
 
 def main():
+    print()
     answer = create_sequence()
-
-    print(f"{bg(0, 0, 0)}{fg(255, 255, 255)}")
-
     guesses = []
     scores = []
 
@@ -95,13 +86,15 @@ def main():
 
         if winner(score):
             text = "guesses" if i > 1 else "guess"
-            print(f"You Won in {i} {text}! Sequence: {display_dots(answer)}\n")
+            print(f"You Won in {i} {text}! Sequence: {display_dots(answer)}  ")
+            print()
             return True
 
         for j, guess in enumerate(guesses):
             guess_output = display_dots(guess)
             score_output = display_dots(scores[j])
-            print(f"{j+1:02}: {guess_output}  Score: {score_output}")
+            spaces = " " * (10 - len(scores[j]))
+            print(f"{j+1:02}: {guess_output}  Score: {score_output}{spaces}")
         print()
 
     print(f"You Lost! Sequence: {display_dots(answer)}\n")
