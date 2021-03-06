@@ -1,6 +1,6 @@
 import pytest
 
-from mastermind import create_sequence, score_guess, winner
+from mastermind import create_sequence, score_guess
 
 
 class TestMastermind(object):
@@ -9,7 +9,7 @@ class TestMastermind(object):
         return ["b", "r", "p", "b"]
 
     def test_sequence_length(self):
-        assert len(create_sequence()) == 4
+        assert len(create_sequence(4)) == 4
 
     @pytest.mark.parametrize(
         "guess,expected",

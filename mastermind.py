@@ -12,8 +12,8 @@ Y = colored(BIG_DOT, "yellow")
 R = colored(BIG_DOT, "red")
 G = colored(BIG_DOT, "green")
 
-BP = colored(LIL_DOT, "grey")
-WP = colored(LIL_DOT, "white")
+BP = colored(LIL_DOT, "green")
+WP = colored(LIL_DOT, "yellow")
 
 COLOR_MAP = {"w": W, "b": B, "p": P, "y": Y, "r": R, "g": G, "bp": BP, "wp": WP}
 
@@ -22,9 +22,9 @@ def display_dots(sequence: list) -> str:
     return " ".join([COLOR_MAP[x] for x in sequence])
 
 
-def create_sequence() -> list:
+def create_sequence(sequence_length: int) -> list:
     choices = ["w", "b", "p", "y", "r", "g"]
-    return [random.choice(choices) for _ in range(0, 4)]
+    return [random.choice(choices) for _ in range(0, sequence_length)]
 
 
 def enter_color() -> str:
@@ -35,8 +35,8 @@ def enter_color() -> str:
     return color
 
 
-def guess_sequence() -> list:
-    guess = [enter_color() for _ in range(0, 4)]
+def guess_sequence(sequence_length: int) -> list:
+    guess = [enter_color() for _ in range(0, sequence_length)]
     confirm = input(f"\nConfirm guess of {display_dots(guess)} (y or n): ")
     if confirm == "y":
         return guess
@@ -65,31 +65,47 @@ def score_guess(guess: list, answer: list) -> list:
     return sorted(score)
 
 
-def winner(score: list) -> bool:
-    if score == ["bp", "bp", "bp", "bp"]:
+def is_winner(score: list, sequence_length: int) -> bool:
+    if score == ["bp"] * sequence_length:
         return True
     return False
 
 
+def get_user_input(question: str) -> int:
+    number = input(f"\n{question}")
+    try:
+        return int(number)
+    except ValueError:
+        print(f"{number} is not valid. Please input an integer.")
+
+
+def print_star_wrap(message: str, color: str, n: int = 30):
+    stars = colored("*" * n, color)
+    print(f"\n\n{stars}\n\n{message}\n\n{stars}\n\n")
+
+
 def main():
+    sequence_length = get_user_input("How long should the sequence be? ")
+    number_of_guesses = get_user_input("How many guesses should you get? ")
     print()
-    answer = create_sequence()
+
+    answer = create_sequence(sequence_length)
     guesses = []
     scores = []
 
-    for i in range(1, 11):
-        guess = guess_sequence()
+    for i in range(1, number_of_guesses + 1):
+        guess = guess_sequence(sequence_length)
         score = score_guess(guess, answer)
 
         guesses.append(guess)
         scores.append(score)
 
-        if winner(score):
+        if is_winner(score, sequence_length):
             text = "guesses" if i > 1 else "guess"
-            print(f"You Won in {i} {text}! Sequence: {display_dots(answer)}  ")
-            print()
+            print_star_wrap(f"You Won in {i} {text}!", "green")
             return True
 
+        print()
         for j, guess in enumerate(guesses):
             guess_output = display_dots(guess)
             score_output = display_dots(scores[j])
@@ -97,8 +113,7 @@ def main():
             print(f"{j+1:02}: {guess_output}  Score: {score_output}{spaces}")
         print()
 
-    print(f"You Lost! Sequence: {display_dots(answer)}\n")
-    print()
+    print_star_wrap(f"You Lost! Sequence: {display_dots(answer)}", "red")
 
 
 if __name__ == "__main__":
