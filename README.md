@@ -9,20 +9,17 @@ This game looks best on a dark terminal background, but should work on lighter o
 * `pipenv install`
 * `pipenv run python mastermind.py`
 
-
-
-
 ### Rules of mastermind:
-* A sequence of 4 colors will be generated
-* Your goal is to guess the sequence in 10 guesses or less
-* The game will ask you for 4 colors per guess
+* You will be asked for a sequence length and how many guesses
+* The standard board game uses a 4 color sequence and 10 guesses
+* Your goal is to guess the computer generated sequence before you run out of guesses
 * It will ask you to confirm your guess before scoring it
 
 ### Scoring:
-* A black peg means you have the correct color in the correct position
-* A white peg means you have the correct color in the wrong position
-* Black and white scoring pegs are sorted. They don't correlate to the position of your colors.
+* A green peg means you have the correct color in the correct position
+* A yellow peg means you have the correct color in the wrong position
+* Green and yellow scoring pegs are sorted. They don't correlate to the position of your colors.
 
     #### Examples:
-    * 4 white pegs means you have all the colors, but in the wrong positions
-    * 2 black and 2 white pegs means you have all the colors right, but two are in the wrong position
+    * 4 yellow pegs means you have all the colors, but in the wrong positions
+    * 2 green and 2 yellow pegs means you have all the colors right, but two are in the wrong position
