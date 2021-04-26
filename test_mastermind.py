@@ -23,7 +23,7 @@ class TestMastermind(object):
             (["w", "b", "r", "p"], ["wp", "wp", "wp"]),
             (["r", "b", "b", "p"], ["wp", "wp", "wp", "wp"]),
             (["b", "p", "r", "b"], ["bp", "bp", "wp", "wp"]),
-        ]
+        ],
     )
     def test_score_guess(self, answer, guess, expected):
         assert score_guess(guess, answer) == expected
