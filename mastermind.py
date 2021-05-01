@@ -1,6 +1,9 @@
 import random
 
+import colorama
 from termcolor import colored
+
+colorama.init()
 
 BIG_DOT = "\u2B24"
 LIL_DOT = "\u25CF"
