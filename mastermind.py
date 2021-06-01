@@ -90,6 +90,13 @@ def print_star_wrap(message: str, color: str, n: int = 30):
     print(f"\n\n{stars}\n\n{message}\n\n{stars}\n\n")
 
 
+def play_again():
+    answer = input("Would you like to play again (y/n)? ")
+    if str(answer.strip()) == "y":
+        return True
+    return False
+
+
 def main(preamble=True):
     if preamble:
         readme = "https://github.com/dansahagian/mastermind/blob/main/README.md"
@@ -114,7 +121,9 @@ def main(preamble=True):
         if is_winner(score, sequence_length):
             text = "guesses" if i > 1 else "guess"
             print_star_wrap(f"You Won in {i} {text}!", "green")
-            return True
+            if play_again():
+                return main(preamble=False)
+            return
 
         print()
         for j, guess in enumerate(guesses):
@@ -127,10 +136,8 @@ def main(preamble=True):
     print_star_wrap(f"You Lost! Sequence: {display_dots(answer)}", "red")
     print()
 
-    play_again = input("Would you like to play again (y/n)? ")
-    if str(play_again.strip()) == "y":
+    if play_again():
         return main(preamble=False)
-
     return
 
 
