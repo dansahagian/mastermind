@@ -82,6 +82,7 @@ def get_user_input(question: str) -> int:
         return int(number)
     except ValueError:
         print(f"{number} is not valid. Please input an integer.")
+        return get_user_input(question)
 
 
 def print_star_wrap(message: str, color: str, n: int = 30):
