@@ -89,10 +89,12 @@ def print_star_wrap(message: str, color: str, n: int = 30):
     print(f"\n\n{stars}\n\n{message}\n\n{stars}\n\n")
 
 
-def main():
-    readme = "https://github.com/dansahagian/mastermind/blob/main/README.md"
-    message = f"If you've never played mastermind, you can read about it at {readme}"
-    print_star_wrap(message, "white")
+def main(preamble=True):
+    if preamble:
+        readme = "https://github.com/dansahagian/mastermind/blob/main/README.md"
+        message = f"If you've never played mastermind, you can read about it at {readme}"
+        print_star_wrap(message, "white")
+
     sequence_length = get_user_input("How long should the sequence be? ")
     number_of_guesses = get_user_input("How many guesses should you get? ")
     print()
@@ -122,6 +124,12 @@ def main():
         print()
 
     print_star_wrap(f"You Lost! Sequence: {display_dots(answer)}", "red")
+
+    play_again = input("\n{Would you like to play again (y/n)}")
+    if str(play_again.strip()) == "y":
+        return main(preamble=False)
+
+    return
 
 
 if __name__ == "__main__":
