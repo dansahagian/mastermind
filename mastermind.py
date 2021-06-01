@@ -124,8 +124,9 @@ def main(preamble=True):
         print()
 
     print_star_wrap(f"You Lost! Sequence: {display_dots(answer)}", "red")
+    print()
 
-    play_again = input("\n{Would you like to play again (y/n)}")
+    play_again = input("Would you like to play again (y/n)")
     if str(play_again.strip()) == "y":
         return main(preamble=False)
 
