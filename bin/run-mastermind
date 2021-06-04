@@ -1,0 +1,1 @@
+/opt/bin/gotty --permit-write /opt/mastermind/mastermind.py
