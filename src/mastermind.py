@@ -80,7 +80,7 @@ class Mastermind:
     def _display_score(self, score: list) -> str:
         return " ".join([self.scoring_map[x] for x in score])
 
-    def _is_winner(self) -> None:
+    def _is_winner(self) -> bool:
         return self.scores[-1] == ["bp"] * self.secret_code_length
 
     @staticmethod
