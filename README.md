@@ -25,7 +25,7 @@ cd mastermind
 ```
 Run the program:
 ```shell
-python3.12 game/play.py
+./play
 ```
 
 ### How to change the code or run the tests:
@@ -38,24 +38,20 @@ git clone <url-to-your-fork>
 ```
 Install [uv](https://github.com/astral-sh/uv).
 
-Create a virtual environment:
+Install tools:
 ```shell
-uv venv
+uv tool install ruff
+uv tool install pre-commit
 ```
 
-Activate the virtual environment:
+Initialize environment:
 ```shell
-source .venv/bin/activate
-```
-
-Install the dependencies:
-```shell
-uv pip sync requirements.txt
+./dev/initialize-env
 ```
 
 Run the tests:
 ```shell
-pytest .
+uv run pytest .
 ```
 
 ### Rules of mastermind:

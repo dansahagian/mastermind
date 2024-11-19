@@ -1,6 +1,6 @@
 import pytest
 
-from game.mastermind import Mastermind
+from mastermind import Mastermind
 
 
 class TestMastermind(object):
