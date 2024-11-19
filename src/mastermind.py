@@ -122,3 +122,8 @@ class Mastermind:
         self._print_star_wrap(
             f"You Lost! Sequence: {self._display_guess(self.secret_code)}"
         )
+
+
+if __name__ == "__main__":
+    mm = Mastermind()
+    mm.play()
