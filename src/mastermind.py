@@ -26,8 +26,7 @@ class Mastermind:
 
     def _create_secret_code(self) -> None:
         self.secret_code = [
-            random.choice(list(self.secret_map.keys()))
-            for _ in range(0, self.secret_code_length)
+            random.choice(list(self.secret_map.keys())) for _ in range(0, self.secret_code_length)
         ]
 
     def _get_user_guess(self) -> None:
@@ -94,9 +93,7 @@ class Mastermind:
             message = f"If you've never played mastermind, you can read about it at:\n{readme}"
             self._print_star_wrap(message)
 
-        self.secret_code_length = self._get_user_input(
-            "How long should the secret code be? "
-        )
+        self.secret_code_length = self._get_user_input("How long should the secret code be? ")
         self.max_guesses = self._get_user_input("How many guesses should you get? ")
         self._create_secret_code()
 
@@ -119,9 +116,7 @@ class Mastermind:
                 print(f"{row} {guess_output}  Score: {score_output}{spaces}")
             print()
 
-        self._print_star_wrap(
-            f"You Lost! Sequence: {self._display_guess(self.secret_code)}"
-        )
+        self._print_star_wrap(f"You Lost! Sequence: {self._display_guess(self.secret_code)}")
 
 
 if __name__ == "__main__":
