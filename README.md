@@ -1,18 +1,11 @@
-[![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/release/python-312/)
-
 ## Mastermind
 
-This is a terminal version of the classic boardgame, Mastermind. I played this as a kid with my grandmother and wrote
-this simple terminal version in 2018 for kicks. This game looks best on a dark terminal background. I might make this
-configurable in a future commit. The instructions should work on macOS or Linux.
-
-If you're using this code to learn and have any questions, feel free to reach out. You can find my Fosstodon and Website
-on my GitHub profile.
+This is a terminal version of the classic boardgame, Mastermind. I played this as a kid with my grandmother and wrote this simple terminal version in 2018 for kicks. This game looks best on a dark terminal background. 
 
 ### How to run the game:
 The game doesn't have any dependencies outside the Python Core Library.  
 
-Download and install Python3.12.  
+Download and install Python or your system might already have it. 
 https://www.python.org/downloads/
 
 Clone the repo:  
@@ -36,17 +29,14 @@ Clone your fork:
 ```shell
 git clone <url-to-your-fork>
 ```
-Install [uv](https://github.com/astral-sh/uv).
+Install [uv](https://docs.astral.sh/uv/).
+Optional Install [just](https://github.com/casey/just)
 
-Install tools:
+Install dependencies and pre-commit hooks:
 ```shell
-uv tool install ruff
-uv tool install pre-commit
-```
-
-Initialize environment:
-```shell
-./dev/initialize-env
+uv venv
+uv sync
+uv run pre-commit install
 ```
 
 Run the tests:
